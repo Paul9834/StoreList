@@ -1,4 +1,4 @@
-package com.paul9834.storelist.ui.view.productlists
+package com.paul9834.storelist.ui.view.productlist
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding

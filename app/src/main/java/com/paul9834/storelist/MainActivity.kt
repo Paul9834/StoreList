@@ -9,7 +9,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.paul9834.storelist.ui.theme.StoreListTheme
-import com.paul9834.storelist.ui.view.productlists.ItemListScreen
+import com.paul9834.storelist.ui.view.productlist.ItemListScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
