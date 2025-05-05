@@ -4,24 +4,29 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import com.paul9834.storelist.data.model.ItemModel
-import com.paul9834.storelist.ui.theme.PurpleGrey80
 
 @Composable
 fun ItemCard(item: ItemModel) {
-    Card(
+    ElevatedCard(
         modifier = Modifier.fillMaxSize(),
-        colors = CardDefaults.cardColors(PurpleGrey80)
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 6.dp
+        ),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant,
+        ),
     ) {
 
         Column(
@@ -29,9 +34,9 @@ fun ItemCard(item: ItemModel) {
         ) {
             Text(
                 text = "${item.title}",
-                style = MaterialTheme.typography.bodyLarge,
-                color = Color.Blue
-            )
+                style = MaterialTheme.typography.titleMedium.copy(
+                    fontWeight = FontWeight.Medium
+                ))
             AsyncImage(
                 model = item.image,
                 contentDescription = null,

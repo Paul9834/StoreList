@@ -61,7 +61,7 @@ fun ItemListScreen (viewModel: ItemViewModel = viewModel(), paddingValues: Paddi
             }
          } else {
             LazyColumn(
-               contentPadding = PaddingValues(start = 16.dp, top = 8.dp, end = 16.dp, bottom = 16.dp),
+               contentPadding = PaddingValues(start = 16.dp, top = 2.dp, end = 16.dp, bottom = 2.dp),
                verticalArrangement = Arrangement.spacedBy(8.dp),
                modifier = Modifier.fillMaxSize()
             ) {
