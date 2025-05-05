@@ -6,86 +6,72 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import coil3.compose.AsyncImage
-import com.paul9834.storelist.data.model.ItemModel
-import com.paul9834.storelist.ui.theme.PurpleGrey80
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.paul9834.storelist.viewModel.ItemViewModel
 
 @Composable
-fun ItemListScreen (viewModel: ItemViewModel = ItemViewModel(), paddingValues: PaddingValues) {
+fun ItemListScreen (viewModel: ItemViewModel = viewModel(), paddingValues: PaddingValues) {
 
    val products by viewModel.items
+   var searchQuery by remember { mutableStateOf("") }
 
-   if (products.isEmpty()) {
-      Box(
-         modifier = Modifier.fillMaxSize(),
-         contentAlignment = Alignment.Center
-      ) {
-         CircularProgressIndicator()
-      }
-   } else {
-      LazyColumn(
-         contentPadding = PaddingValues(16.dp),
-         verticalArrangement = Arrangement.spacedBy(8.dp),
-         modifier = Modifier.padding(paddingValues)
-      ) {
-         items(products) {
-            ItemCard(it)
+    Column(modifier = Modifier.padding(paddingValues).fillMaxSize()) {
+
+      SearchBar(
+         query = searchQuery,
+         onQueryChange = { newQuery -> searchQuery = newQuery },
+         placeholderText = "Buscar producto..."
+      )
+
+      if (products.isEmpty()) {
+         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            CircularProgressIndicator()
+         }
+      } else {
+         val filteredProducts by remember(products, searchQuery) {
+            derivedStateOf {
+               if (searchQuery.isBlank()) {
+                  products
+               } else {
+                  products.filter { product ->
+                     product.title?.contains(searchQuery, ignoreCase = true) ?: false
+                  }
+               }
+            }
+         }
+
+         if (searchQuery.isNotBlank() && filteredProducts.isEmpty()) {
+            Box(modifier = Modifier.fillMaxSize().padding(16.dp), contentAlignment = Alignment.Center) {
+               Text("No se encontraron productos que coincidan con '$searchQuery'.")
+            }
+         } else {
+            LazyColumn(
+               contentPadding = PaddingValues(start = 16.dp, top = 8.dp, end = 16.dp, bottom = 16.dp),
+               verticalArrangement = Arrangement.spacedBy(8.dp),
+               modifier = Modifier.fillMaxSize()
+            ) {
+               items(
+                  items = filteredProducts,
+                  key = { product -> product.id ?: product.hashCode() }
+               ) { product ->
+                  ItemCard(product)
+               }
+            }
          }
       }
    }
 }
 
-@Composable
-fun ItemCard(item: ItemModel) {
-   Card(
-      modifier = Modifier.fillMaxSize(),
-      colors = CardDefaults.cardColors(PurpleGrey80)
-   ) {
-
-      Column(
-         modifier = Modifier.padding(16.dp)
-      ) {
-         Text(
-            text = "Product Name: ${item.title}",
-            style = MaterialTheme.typography.bodyLarge,
-            color = Color.Blue
-         )
-         AsyncImage(
-            model = item.image,
-            contentDescription = null,
-            modifier = Modifier
-               .size(100.dp)
-               .padding(end = 8.dp, bottom = 8.dp, top = 8.dp),
-            contentScale = ContentScale.Crop
-         )
-         Text(
-            text = "Category: ${item.category}",
-            style = MaterialTheme.typography.bodyMedium,
-            color = Color.Black
-         )
-         Text(
-            text = "Description: ${item.description}",
-            style = MaterialTheme.typography.bodySmall,
-            color = Color.Black
-         )
-      }
-   }
-
-
-}

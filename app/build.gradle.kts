@@ -49,6 +49,9 @@ dependencies {
     implementation("io.coil-kt.coil3:coil-network-okhttp:3.1.0")
 
 
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.0") // 
+
+
     implementation(libs.kotlinx.serialization.json) // Use the latest version
 
     // Retrofit

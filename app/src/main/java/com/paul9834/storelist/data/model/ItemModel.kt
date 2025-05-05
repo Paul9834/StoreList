@@ -6,12 +6,12 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class ItemModel(
+    @SerialName("id")
+    val id: Int? = 0,
     @SerialName("category")
     val category: String? = "",
     @SerialName("description")
     val description: String? = "",
-    @SerialName("id")
-    val id: Int? = 0,
     @SerialName("image")
     val image: String? = "",
     @SerialName("price")
