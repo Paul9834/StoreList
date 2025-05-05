@@ -2,5 +2,8 @@
     <string name="app_name">StoreList</string>
     <string name="search_hint">Buscar producto...</string>
     <string name="search_hint_default">Buscar..</string>
+    <string name="title_app">Lista de Productos</string>
+    <string name="no_products_found_matching">No se encontraron productos que coincidan con \'%1$s\'.</string>
+
 
 </resources>

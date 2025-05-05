@@ -56,8 +56,8 @@ fun ItemListScreen (viewModel: ItemViewModel = viewModel(), paddingValues: Paddi
          }
 
          if (searchQuery.isNotBlank() && filteredProducts.isEmpty()) {
-            Box(modifier = Modifier.fillMaxSize().padding(16.dp), contentAlignment = Alignment.Center) {
-               Text("No se encontraron productos que coincidan con '$searchQuery'.")
+            Box(modifier = Modifier.fillMaxSize().padding(30.dp), contentAlignment = Alignment.Center) {
+               Text(stringResource(id = R.string.no_products_found_matching, searchQuery))
             }
          } else {
             LazyColumn(

@@ -12,6 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.paul9834.storelist.R
 
 
@@ -27,11 +28,11 @@ fun SearchBar(
     ) {
 
         Text(
-            text = "Lista de Productos",
+            text = stringResource(R.string.title_app),
             style = MaterialTheme.typography.titleLarge.copy(
-                fontWeight = FontWeight.Bold
-            )
-        )
+                fontWeight = FontWeight.Bold,
+                fontSize = 24.sp),
+            modifier = modifier.padding(top = 5.dp, bottom = 5.dp))
 
         OutlinedTextField(
             value = query,
