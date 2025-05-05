@@ -43,11 +43,15 @@ android {
 dependencies {
 
 
+    // Coil : allow load pics from servers
+
+    implementation("io.coil-kt.coil3:coil-compose:3.1.0")
+    implementation("io.coil-kt.coil3:coil-network-okhttp:3.1.0")
+
+
     implementation(libs.kotlinx.serialization.json) // Use the latest version
 
-
     // Retrofit
-
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
 
