@@ -1,4 +1,4 @@
-package com.paul9834.storelist.ui.view
+package com.paul9834.storelist.ui.view.productlists
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
