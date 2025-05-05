@@ -1,5 +1,6 @@
 package com.paul9834.storelist.ui.view.productlist
 
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -18,8 +19,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.paul9834.storelist.R
 import com.paul9834.storelist.viewModel.ItemViewModel
 
 @Composable
@@ -27,13 +30,12 @@ fun ItemListScreen (viewModel: ItemViewModel = viewModel(), paddingValues: Paddi
 
    val products by viewModel.items
    var searchQuery by remember { mutableStateOf("") }
-
     Column(modifier = Modifier.padding(paddingValues).fillMaxSize()) {
 
       SearchBar(
          query = searchQuery,
          onQueryChange = { newQuery -> searchQuery = newQuery },
-         placeholderText = "Buscar producto..."
+         placeholderText = stringResource(id = R.string.search_hint)
       )
 
       if (products.isEmpty()) {

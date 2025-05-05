@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">StoreList</string>
+    <string name="search_hint">Buscar producto...</string>
+    <string name="search_hint_default">Buscar..</string>
+
 </resources>
