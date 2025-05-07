@@ -49,14 +49,19 @@ dependencies {
     implementation("io.coil-kt.coil3:coil-compose:3.1.0")
     implementation("io.coil-kt.coil3:coil-network-okhttp:3.1.0")
 
+    // android lifecycle : allow to use viewmodel
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7") // Use the latest version
+
+    // android navigation : allow to navigate between screens
+
     implementation("androidx.navigation:navigation-compose:2.8.9")
 
-
+    // Kotlinx : allow to serialize data
+    
     implementation(libs.kotlinx.serialization.json) // Use the latest version
 
-    // Retrofit
+    // Retrofit : allow to get data from server
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
 
