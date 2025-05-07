@@ -75,4 +75,34 @@ com.paul9834.storelist
    - *Unitarias*: validan `ItemViewModel` para flujo exitoso y de error.
    - *Instrumentadas*: comprueban navegación con testTags y `performScrollTo()`
 
+## Dependencias
+
+Librerias usadas en el proyecto:
+
+```kotlin
+// ——— Pruebas ———
+testImplementation(libs.junit)                         // allow to test code
+testImplementation(libs.kotlinx.coroutines.test)       // allow to test coroutines
+
+// ——— Carga de imágenes ———
+implementation(libs.coil.compose)                      // allow load pics from servers
+implementation(libs.coil.network.okhttp)
+
+// ——— Arquitectura & Ciclo de vida ———
+implementation(libs.androidx.lifecycle.viewmodel.compose) // allow to use viewmodel
+
+// ——— Navegación ———
+implementation(libs.androidx.navigation.compose)       // allow to navigate between screens
+
+// ——— Serialización ———
+implementation(libs.kotlinx.serialization.json)        // allow to serialize data
+
+// ——— Comunicación con servidor ———
+implementation(libs.retrofit)                          
+implementation(libs.converter.gson)                    // allow to get data from server
+```
+---
+
+
+
 > **Conclusión:** Esta arquitectura proporciona una estructura sólida, con separación de capas y repositorio, facilita la mantenibilidad, testabilidad y escalabilidad del proyecto.
