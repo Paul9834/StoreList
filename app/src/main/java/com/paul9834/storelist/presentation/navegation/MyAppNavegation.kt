@@ -43,8 +43,7 @@ fun MyAppNavegation(paddingValues: PaddingValues) {
 
             item?.let {
                 ProductDetailScreen(
-                    itemModel = it,
-                    navController = navController
+                    itemModel = it
                 )
             }
 
