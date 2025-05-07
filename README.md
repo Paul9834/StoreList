@@ -1,8 +1,6 @@
 # Lista de Productos StoreList (MVVM Clean Arquitecture) / Prueba Kevin Paul Montealegre Melo / Grupo ASD
 ## Instrucciones para Correr el Proyecto 🚀:
 
-![MVVM](https://i.imgur.com/qZ3uHOs.png)
-
 1. Clona el repositorio:
 2. git clone https://github.com/Paul9834/StoreList.git
 3. Abre el proyecto en Android Studio
