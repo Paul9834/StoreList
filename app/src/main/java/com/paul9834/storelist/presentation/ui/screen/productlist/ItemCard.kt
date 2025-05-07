@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -22,7 +23,10 @@ import com.paul9834.storelist.presentation.navegation.NavRoutes
 @Composable
 fun ItemCard(navController: NavController, item: ItemModel) {
     ElevatedCard(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            // set the tag to test from card
+            .testTag("ItemCard_${item.id}"),
         elevation = CardDefaults.cardElevation(
             defaultElevation = 6.dp
         ),

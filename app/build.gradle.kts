@@ -43,6 +43,10 @@ android {
 
 dependencies {
 
+    // Junit : allow to test code
+    testImplementation (libs.junit)
+    // Kotlinx : allow to test coroutines
+    testImplementation (libs.kotlinx.coroutines.test)
 
     // Coil : allow load pics from servers
 

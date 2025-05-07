@@ -1,6 +1,7 @@
 package com.paul9834.storelist.presentation.ui.screen.productdetail
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -10,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.paul9834.storelist.data.model.ItemModel
 
@@ -17,6 +19,12 @@ import com.paul9834.storelist.data.model.ItemModel
 @Composable
 fun ProductDetailScreen(itemModel: ItemModel) {
 
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            // set the tag to test to destination
+            .testTag("DetailScreen")
+    ) {
     Scaffold (
         topBar = {
             TopAppBar(
@@ -36,6 +44,7 @@ fun ProductDetailScreen(itemModel: ItemModel) {
             ProductDetailCard(itemModel)
             }
         }
+    }
     }
 }
 
