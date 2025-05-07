@@ -10,7 +10,6 @@
    Run > Run "app"
 
 ## 📂 Estructura de Carpetas
-
 ```
 com.paul9834.storelist
 ├── data
@@ -32,16 +31,23 @@ com.paul9834.storelist
     │   ├ MyAppNavigation.kt
     │   └ NavRoutes.kt                ← Definición de rutas de navegación
     ├── ui
-    │   ├ productlist
-    │   │   ├ ItemCard.kt
-    │   │   └ ItemListScreen.kt
-    │   └ productdetail
-    │       └ ProductDetailScreen.kt
+    │   ├ screen
+    │   │   ├ productlist
+    │   │   │   ├ ItemCard.kt
+    │   │   │   └ ItemListScreen.kt
+    │   │   └ productdetail
+    │   │       ├ ProductDetailScreen.kt
+    │   │       └ ProductDetailCard.kt
+    │   └ theme
+    │       ├ Color.kt
+    │       ├ Theme.kt
+    │       └ Type.kt
     ├── viewmodel
     │   ├ ItemViewModel.kt            ← Lógica de estado de lista
     │   └ ItemViewModelFactory.kt     ← Fábrica para inyección manual
     └── MainActivity.kt               ← Entry point de la app
 ```
+
 
 ## Arquitectura 🏗️
 
