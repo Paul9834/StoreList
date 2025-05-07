@@ -1,14 +1,16 @@
-package com.paul9834.storelist.viewModel
+package com.paul9834.storelist.presentation.viewmodel
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.State
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.paul9834.storelist.data.api.RetrofitInstance
 import com.paul9834.storelist.data.model.ItemModel
+import com.paul9834.storelist.domain.repository.ItemsRepository
 import kotlinx.coroutines.launch
 
-class ItemViewModel : ViewModel() {
+class ItemViewModel(
+    private val repository: ItemsRepository
+) : ViewModel() {
 
     private val _items = mutableStateOf<List<ItemModel>>(emptyList())
     val items: State<List<ItemModel>> = _items
@@ -20,10 +22,11 @@ class ItemViewModel : ViewModel() {
     private fun getItems() {
         viewModelScope.launch {
             try {
-                _items.value = RetrofitInstance.api.getProducts()
+                _items.value = repository.getProducts()
             } catch (e: Exception) {
-                // Handle error
-                e.printStackTrace()
+                emptyList<ItemModel>().also {
+                    e.printStackTrace()
+                }
             }
         }
     }

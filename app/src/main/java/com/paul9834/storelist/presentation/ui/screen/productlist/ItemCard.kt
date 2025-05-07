@@ -1,4 +1,4 @@
-package com.paul9834.storelist.ui.view.productlist
+package com.paul9834.storelist.presentation.ui.screen.productlist
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,11 +14,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import coil3.compose.AsyncImage
 import com.paul9834.storelist.data.model.ItemModel
+import com.paul9834.storelist.presentation.navegation.NavRoutes
 
 @Composable
-fun ItemCard(item: ItemModel) {
+fun ItemCard(navController: NavController, item: ItemModel) {
     ElevatedCard(
         modifier = Modifier.fillMaxSize(),
         elevation = CardDefaults.cardElevation(
@@ -27,6 +29,15 @@ fun ItemCard(item: ItemModel) {
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceVariant,
         ),
+        onClick = {
+
+            navController.currentBackStackEntry
+                ?.savedStateHandle
+                ?.set("selectedItem", item)
+
+            navController.navigate(NavRoutes.Detail)
+
+        },
     ) {
 
         Column(

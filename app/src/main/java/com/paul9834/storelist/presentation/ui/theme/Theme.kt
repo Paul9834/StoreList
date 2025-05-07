@@ -1,6 +1,5 @@
-package com.paul9834.storelist.ui.theme
+package com.paul9834.storelist.presentation.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

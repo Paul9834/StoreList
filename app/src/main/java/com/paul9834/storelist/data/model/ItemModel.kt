@@ -1,10 +1,12 @@
 package com.paul9834.storelist.data.model
 
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 
-@Serializable
+
+@Parcelize
 data class ItemModel(
     @SerialName("id")
     val id: Int? = 0,
@@ -20,4 +22,4 @@ data class ItemModel(
     val rating: RatingModel? = RatingModel(),
     @SerialName("title")
     val title: String? = ""
-)
+)  : Parcelable

@@ -1,4 +1,4 @@
-package com.paul9834.storelist.ui.view.productlist
+package com.paul9834.storelist.presentation.ui.screen.productlist
 
 
 import androidx.compose.foundation.layout.Arrangement
@@ -22,13 +22,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
 import com.paul9834.storelist.R
-import com.paul9834.storelist.viewModel.ItemViewModel
+import com.paul9834.storelist.data.repository.DefaultItemsRepository
+import com.paul9834.storelist.presentation.viewmodel.ItemViewModel
+import com.paul9834.storelist.presentation.viewmodel.ItemViewModelFactory
 
 @Composable
-fun ItemListScreen (viewModel: ItemViewModel = viewModel(), paddingValues: PaddingValues) {
+fun ItemListScreen (navController: NavHostController, paddingValues: PaddingValues) {
+
+   val repository = remember { DefaultItemsRepository() }
+
+   val viewModel: ItemViewModel = viewModel(
+      factory = ItemViewModelFactory(repository)
+   )
 
    val products by viewModel.items
+
    var searchQuery by remember { mutableStateOf("") }
     Column(modifier = Modifier.padding(paddingValues).fillMaxSize()) {
 
@@ -69,7 +79,7 @@ fun ItemListScreen (viewModel: ItemViewModel = viewModel(), paddingValues: Paddi
                   items = filteredProducts,
                   key = { product -> product.id ?: product.hashCode() }
                ) { product ->
-                  ItemCard(product)
+                  ItemCard(navController, product)
                }
             }
          }
